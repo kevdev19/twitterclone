@@ -18,9 +18,11 @@ from django.urls import path, include
 
 from twitteruser_app import views as twitteruserappview
 from authentication_app import views as authenticateappview
+from tweet_app import views as tweetappview
 
 urlpatterns = [
     path('', twitteruserappview.index_view, name='homepage'),
+    path('create/', tweetappview.create_tweet, name='createtweet'),
     path('login/', authenticateappview.login_view, name='loginpage'),
     path('logout/', authenticateappview.logout_view, name='logoutpage'),
     path('admin/', admin.site.urls),
