@@ -3,6 +3,16 @@
 {% if user.is_authenticated %}
 
 <h3>Hello, {{ user.username }}</h3>
+
+{% for tweet in tweets %}
+<ul style="list-style: none">
+  <li>
+    <h3>@{{tweet.createdby}}</h4> 
+    <p>{{tweet.tweet_body}}</p>
+    <p>{{tweet.time_submitted}}</p>
+  </li>
+</ul>
+{% endfor %}
 <a href="{% url 'createtweet' %}">Tweet</a>
 <a href="{% url 'logoutpage' %}">Logout</a>
 

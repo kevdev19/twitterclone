@@ -13,8 +13,4 @@ class TweetModel(models.Model):
 
     # Displays multiple columns in admin panel
     def __str__(self):
-        ret = self.tweet_body + ',' + self.createdby + ',' + self.time_submitted
-        return ret
-
-        class Meta:
-            unique_together = ['tweet_body', 'createdby', 'time_submitted']
+        return self.tweet_body
