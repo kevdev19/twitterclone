@@ -6,6 +6,7 @@ from .models import TweetModel, TwitterUserModel
 from .forms import TweetForm
 
 
+@login_required
 def create_tweet(request):
     if request.method == "POST":
         form = TweetForm(request.POST)

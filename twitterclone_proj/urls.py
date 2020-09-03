@@ -23,7 +23,10 @@ from tweet_app import views as tweetappviews
 
 urlpatterns = [
     path('', twitteruserappviews.index_view, name='homepage'),
-    path('tweet/<int:tweet_id>', tweetappviews.tweet_detail_view, name='tweetdetail'),
+    path('tweet/<int:tweet_id>/',
+         tweetappviews.tweet_detail_view, name='tweetdetail'),
+    path('profile/<str:user_name>/',
+         twitteruserappviews.user_detail_view, name='profilepage'),
     path('create/', tweetappviews.create_tweet, name='createtweet'),
     path('register/', twitteruserappviews.signup_view, name='signup'),
     path('login/', authenticateappviews.login_view, name='loginpage'),

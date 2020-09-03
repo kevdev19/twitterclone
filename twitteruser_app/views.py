@@ -29,3 +29,8 @@ def signup_view(request):
         signup_form = RegistrationForm()
 
     return render(request, 'signup.html', {"form": signup_form})
+
+
+def user_detail_view(request, user_name):
+    user_detail = TwitterUserModel.objects.get(username=user_name)
+    return render(request, 'user_detail.html', {"user_detail": user_detail})

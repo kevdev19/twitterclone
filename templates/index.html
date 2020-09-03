@@ -10,11 +10,13 @@
     <h3>@{{tweet.createdby}}</h4> 
     <p>{{tweet.tweet_body}}</p>
     <p>{{tweet.time_submitted}}</p>
-    <p><a href="{% url 'tweetdetail' tweet_id=tweet.id %}">Tweet URL</a></p>
+    <p><a href="/tweet/{{tweet.id}}/">Tweet URL</a></p>
+    <hr>
   </li>
 </ul>
 {% endfor %}
 <a href="{% url 'createtweet' %}">Tweet</a>
 <a href="{% url 'logoutpage' %}">Logout</a>
+<a href="{% url 'profilepage' user_name=user.username %}">My Profile</a>
 
 {% endif %}
