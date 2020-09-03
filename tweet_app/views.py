@@ -20,3 +20,8 @@ def create_tweet(request):
 
     form = TweetForm()
     return render(request, "create_tweet.html", {"form": form})
+
+
+def tweet_detail_view(request, tweet_id):
+    tweet_detail = TweetModel.objects.filter(id=tweet_id)
+    return render(request, 'tweet_detail.html', {"tweet": tweet_detail})
