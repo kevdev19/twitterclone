@@ -10,6 +10,7 @@
     <h3>@{{tweet.createdby}}</h4> 
     <p>{{tweet.tweet_body}}</p>
     <p>{{tweet.time_submitted}}</p>
+    <p><a href="{% url 'tweetdetail' tweet_id=tweet.id %}">Tweet URL</a></p>
   </li>
 </ul>
 {% endfor %}
