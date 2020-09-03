@@ -6,3 +6,10 @@
 <p>{{ tweet.createdby }}</p>
 <h4>Tweeted on:</h4>
 <p>{{ tweet.time_submitted }}</p>
+
+{% if user.is_authenticated %}
+<a href="{% url 'homepage' %}">Home</a>
+
+{% else %}
+<a href="{% url 'loginpage' %}">Login</a>
+{% endif %}
