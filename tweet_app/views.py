@@ -23,5 +23,5 @@ def create_tweet(request):
 
 
 def tweet_detail_view(request, tweet_id):
-    tweet_detail = TweetModel.objects.filter(id=tweet_id)
+    tweet_detail = TweetModel.objects.filter(id=tweet_id).first()
     return render(request, 'tweet_detail.html', {"tweet": tweet_detail})
