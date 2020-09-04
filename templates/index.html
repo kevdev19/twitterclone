@@ -7,7 +7,7 @@
 {% for tweet in tweets %}
 <ul style="list-style: none">
   <li>
-    <h3>@{{tweet.createdby}}</h4> 
+    <h3><a href="/profile/{{ tweet.createdby }}/">@{{tweet.createdby}}</a></h4> 
     <p>{{tweet.tweet_body}}</p>
     <p>{{tweet.time_submitted}}</p>
     <p><a href="/tweet/{{tweet.id}}/">Tweet URL</a></p>

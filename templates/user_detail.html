@@ -1,5 +1,18 @@
+{% if user.is_authenticated %}
 <h1>{{ request.user}}'s Profile Page</h1>
+<p><strong>Displayname:</strong> {{ user_detail.displayname }}</p>
+<p><strong>Bio:</strong> {{ user_detail.bio }}</p>
+<p><strong>Website:</strong> {{ user_detail.website }}</p>
 
-<p>{{ user_detail.displayname }}</p>
-<p>{{ user_detail.bio }}</p>
-<p>{{ user_detail.website }}</p>
+{% else %}
+<h1>{{user_detail.username}}'s Profile Page</h1>
+<p><strong>Displayname:</strong> {{ user_detail.displayname }}</p>
+<p><strong>Bio:</strong> {{ user_detail.bio }}</p>
+<p><strong>Website:</strong> {{ user_detail.website }}</p>
+
+{% endif %} {% if user.is_authenticated %}
+<a href="{% url 'homepage' %}">Home</a>
+
+{% else %}
+<a href="{% url 'loginpage' %}">Login</a>
+{% endif %}
