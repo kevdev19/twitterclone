@@ -1,5 +1,5 @@
 from django.contrib import admin
-# from django.contrib.auth.admin import UserAdmin
-from .models import TwitterUserModel
+from django.contrib.auth.admin import UserAdmin
+from .models import TwitterUser
 
-admin.site.register(TwitterUserModel)
+admin.site.register(TwitterUser, UserAdmin)

@@ -2,7 +2,7 @@ from django import forms
 
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
-from .models import TwitterUserModel
+from .models import TwitterUser
 
 
 class RegistrationForm(UserCreationForm):
@@ -10,7 +10,7 @@ class RegistrationForm(UserCreationForm):
     bio = forms.CharField(max_length=255, widget=forms.Textarea)
 
     class Meta:
-        model = TwitterUserModel
+        model = TwitterUser
         fields = ('displayname', 'username', 'password1', 'password2', 'bio')
 
 

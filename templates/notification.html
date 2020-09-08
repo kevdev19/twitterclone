@@ -1,0 +1,4 @@
+{% include 'base.html' %} {% if new %} {% for n in new %} {{n.tweet_body}}
+{{n.createdby}} {{n.time_submitted}} {% endfor %} {% else %}
+<p>No New Notifications</p>
+{% endif %}

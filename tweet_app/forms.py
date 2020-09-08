@@ -1,9 +1,9 @@
 from django import forms
 
-from .models import TweetModel
+from .models import Tweet
 
 
 class TweetForm(forms.ModelForm):
     class Meta:
-        model = TweetModel
+        model = Tweet
         fields = ['tweet_body']

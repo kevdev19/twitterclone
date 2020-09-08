@@ -3,14 +3,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 
 
-from tweet_app.models import TweetModel, TwitterUserModel
+from tweet_app.models import Tweet, TwitterUser
 
 from .forms import RegistrationForm
 
 
 @login_required
 def index_view(request):
-    tweets = TweetModel.objects.all().order_by('-time_submitted')
+    tweets = Tweet.objects.all().order_by('-time_submitted')
     following = request.user.followers.all()
     return render(request, 'index.html', {"tweets": tweets})
 
@@ -33,8 +33,8 @@ def signup_view(request):
 
 
 def user_detail_view(request, user_name):
-    profile = TwitterUserModel.objects.filter(username=user_name).first()
-    tweets = TweetModel.objects.filter(
+    profile = TwitterUser.objects.filter(username=user_name).first()
+    tweets = Tweet.objects.filter(
         createdby=profile).order_by('-time_submitted')
     if request.user.is_authenticated:
         followers = request.user.followers.all()
@@ -45,7 +45,7 @@ def user_detail_view(request, user_name):
 
 def follow_view(request, user_name):
     current_user = request.user
-    following_user = TwitterUserModel.objects.filter(
+    following_user = TwitterUser.objects.filter(
         username=user_name).first()
     current_user.followers.add(following_user)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
@@ -53,7 +53,7 @@ def follow_view(request, user_name):
 
 def unfollow_view(request, user_name):
     current_user = request.user
-    following_user = TwitterUserModel.objects.filter(
+    following_user = TwitterUser.objects.filter(
         username=user_name).first()
     current_user.followers.remove(following_user)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))

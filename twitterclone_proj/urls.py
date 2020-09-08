@@ -19,6 +19,7 @@ from django.urls import path, include
 from twitteruser_app import views as twitteruserappviews
 from authentication_app import views as authenticateappviews
 from tweet_app import views as tweetappviews
+from notification_app import views as notificationappviews
 
 
 urlpatterns = [
@@ -34,6 +35,7 @@ urlpatterns = [
     path('login/', authenticateappviews.login_view, name='loginpage'),
     path('logout/', authenticateappviews.logout_view, name='logoutpage'),
     path('admin/', admin.site.urls),
+    path('notification/', notificationappviews.notify, name='notification'),
     path('profile/<str:user_name>/',
          twitteruserappviews.user_detail_view, name='profilepage'),
 ]
