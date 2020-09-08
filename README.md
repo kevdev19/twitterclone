@@ -1,5 +1,7 @@
 # twitterclone
 
+<img src="preview.png">
+
 superuser credentials:
 admin
 admin
