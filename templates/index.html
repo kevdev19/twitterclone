@@ -5,10 +5,24 @@
 
 <h3>Hello, {{ user.username }}</h3>
 
-<a href="{% url 'createtweet' %}">Tweet</a>
-<a href="{% url 'logoutpage' %}">Logout</a>
-<a href="{% url 'profilepage' user_name=user.username %}">My Profile</a>
-<a href="{% url 'notification' %}">Notifications</a>
+<button type="button" class="btn btn-primary active">
+  <a style="color: white" href="{% url 'createtweet' %}">New Tweet</a>
+</button>
+
+<button type="button" class="btn btn-primary active">
+  <a style="color: white" href="{% url 'profilepage' user_name=user.username %}"
+    >My Profile</a
+  >
+</button>
+
+<button type="button" class="btn btn-primary active">
+  <a style="color: white" href="{% url 'notification' %}">Notifications</a>
+</button>
+
+<button type="button" class="btn btn-primary active">
+  <a style="color: white" href="{% url 'logoutpage' %}">Logout</a>
+</button>
+<hr />
 
 <h4>All Tweets</h4>
 {% for tweet in tweets %}
