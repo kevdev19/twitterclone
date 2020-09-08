@@ -1,17 +1,18 @@
 <h1>Welcome To Twitter Clone</h1>
 
-{% if user.is_authenticated %}
+{% if request.user.is_authenticated %}
 
 <h3>Hello, {{ user.username }}</h3>
 
 {% for tweet in tweets %}
+
 <ul style="list-style: none">
   <li>
-    <h3><a href="/profile/{{ tweet.createdby }}/">@{{tweet.createdby}}</a></h4> 
+    <h3><a href="/profile/{{ tweet.createdby }}/">@{{tweet.createdby}}</a></h3>
     <p>{{tweet.tweet_body}}</p>
     <p>{{tweet.time_submitted}}</p>
     <p><a href="/tweet/{{tweet.id}}/">Tweet URL</a></p>
-    <hr>
+    <hr />
   </li>
 </ul>
 {% endfor %}

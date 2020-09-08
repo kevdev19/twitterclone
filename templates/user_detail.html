@@ -1,18 +1,27 @@
+<h1>{{ profile.username }}'s Profile Page</h1>
+<p><strong>Displayname:</strong> {{profile.displayname }}</p>
+<p><strong>Bio:</strong> {{profile.bio }}</p>
+<p><strong>Website:</strong> {{profile.website }}</p>
 {% if user.is_authenticated %}
-<h1>{{ request.user}}'s Profile Page</h1>
-<p><strong>Displayname:</strong> {{ user_detail.displayname }}</p>
-<p><strong>Bio:</strong> {{ user_detail.bio }}</p>
-<p><strong>Website:</strong> {{ user_detail.website }}</p>
-
-{% else %}
-<h1>{{user_detail.username}}'s Profile Page</h1>
-<p><strong>Displayname:</strong> {{ user_detail.displayname }}</p>
-<p><strong>Bio:</strong> {{ user_detail.bio }}</p>
-<p><strong>Website:</strong> {{ user_detail.website }}</p>
-
-{% endif %} {% if user.is_authenticated %}
 <a href="{% url 'homepage' %}">Home</a>
+
+{% if user.is_authenticated and request.user != profile %}
+<a href="/follow/{{ profile.username }}/">Follow</a>
+<a href="/unfollow/{{ profile.username }}/">Unfollow</a>
+{% endif %}
+<p>{{profile.username}}'s following count: {{ profile.followers.count}}</p>
+<p>{{profile.username }}'s Tweet Count: {{ tweets.count}}</p>
 
 {% else %}
 <a href="{% url 'loginpage' %}">Login</a>
-{% endif %}
+{% endif %} {% for tweet in tweets %}
+<ul style="list-style: none">
+  <li>
+    <h3><a href="/profile/{{ tweet.createdby }}/">@{{ tweet.createdby}}</a></h3>
+    <p>{{tweet.tweet_body}}</p>
+    <p>{{tweet.time_time_submitted}}</p>
+    <p><a href="/tweet/{{tweet.id}}/">Tweet URL</a></p>
+    <hr />
+  </li>
+</ul>
+{% endfor %}
