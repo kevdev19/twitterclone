@@ -4,6 +4,11 @@
 
 <h3>Hello, {{ user.username }}</h3>
 
+<a href="{% url 'createtweet' %}">Tweet</a>
+<a href="{% url 'logoutpage' %}">Logout</a>
+<a href="{% url 'profilepage' user_name=user.username %}">My Profile</a>
+<a href="{% url 'notification' %}">Notifications</a>
+
 {% for tweet in tweets %}
 
 <ul style="list-style: none">
@@ -15,10 +20,4 @@
     <hr />
   </li>
 </ul>
-{% endfor %}
-<a href="{% url 'createtweet' %}">Tweet</a>
-<a href="{% url 'logoutpage' %}">Logout</a>
-<a href="{% url 'profilepage' user_name=user.username %}">My Profile</a>
-<a href="{% url 'notification' %}">Notifications</a>
-
-{% endif %}
+{% endfor %} {% endif %}
