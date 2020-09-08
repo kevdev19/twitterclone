@@ -1,3 +1,5 @@
+{% include 'base.html' %} {% block content %}
+
 <h1>{{ profile.username }}'s Profile Page</h1>
 <p><strong>Displayname:</strong> {{profile.displayname }}</p>
 <p><strong>Bio:</strong> {{profile.bio }}</p>
@@ -24,4 +26,4 @@
     <hr />
   </li>
 </ul>
-{% endfor %}
+{% endfor %} {% endblock content %}

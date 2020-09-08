@@ -1,3 +1,5 @@
+{% include 'base.html' %} {% block content %}
+
 <h1>Tweet URL Page</h1>
 
 <h4>Tweet Message:</h4>
@@ -12,4 +14,4 @@
 
 {% else %}
 <a href="{% url 'loginpage' %}">Login</a>
-{% endif %}
+{% endif %} {% endblock content %}

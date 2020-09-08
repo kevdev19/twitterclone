@@ -1,3 +1,4 @@
+{% include 'base.html' %} {% block content %}
 <h3>Please Login to Continue</h3>
 
 <form action="" method="post">
@@ -15,3 +16,4 @@
   <input type="hidden" name="next" value="{{ request.GET.next }}" />
   <input type="submit" value="Log in" /> <a href="{% url 'signup' %}">Signup</a>
 </form>
+{% endblock content %}
