@@ -25,7 +25,7 @@ from notification_app import views as notificationappviews
 urlpatterns = [
     path('', twitteruserappviews.index_view, name='homepage'),
     path('tweet/<int:tweet_id>/',
-         tweetappviews.tweet_detail_view, name='tweetdetail'),
+         tweetappviews.TweetDetailView.as_view(), name='tweetdetail'),
     path('create/', tweetappviews.CreateTweetView.as_view(), name='createtweet'),
     path('register/', twitteruserappviews.signup_view, name='signup'),
     path('follow/<str:user_name>/',

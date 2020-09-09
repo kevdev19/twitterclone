@@ -60,6 +60,13 @@ class CreateTweetView(TemplateView):
             return render(request, "create_tweet.html", {"form": form})
 
 
-def tweet_detail_view(request, tweet_id):
-    tweet_detail = Tweet.objects.filter(id=tweet_id).first()
-    return render(request, 'tweet_detail.html', {"tweet": tweet_detail})
+# def tweet_detail_view(request, tweet_id):
+#     tweet_detail = Tweet.objects.filter(id=tweet_id).first()
+#     return render(request, 'tweet_detail.html', {"tweet": tweet_detail})
+
+
+class TweetDetailView(TemplateView):
+
+    def get(self, request, tweet_id):
+        tweet_detail = Tweet.objects.filter(id=tweet_id).first()
+        return render(request, 'tweet_detail.html', {"tweet": tweet_detail})
