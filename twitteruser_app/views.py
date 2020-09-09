@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
+from django.views.generic import TemplateView
 
 
 from tweet_app.models import Tweet, TwitterUser
@@ -32,15 +33,28 @@ def signup_view(request):
     return render(request, 'signup.html', {"form": signup_form})
 
 
-def user_detail_view(request, user_name):
-    profile = TwitterUser.objects.filter(username=user_name).first()
-    tweets = Tweet.objects.filter(
-        createdby=profile).order_by('-time_submitted')
-    if request.user.is_authenticated:
-        followers = request.user.followers.all()
-    else:
-        followers = []
-    return render(request, 'user_detail.html', {"profile": profile, "tweets": tweets, "followers": followers})
+# def user_detail_view(request, user_name):
+#     profile = TwitterUser.objects.filter(username=user_name).first()
+#     tweets = Tweet.objects.filter(
+#         createdby=profile).order_by('-time_submitted')
+#     if request.user.is_authenticated:
+#         followers = request.user.followers.all()
+#     else:
+#         followers = []
+#     return render(request, 'user_detail.html', {"profile": profile, "tweets": tweets, "followers": followers})
+
+
+class UserDetailView(TemplateView):
+
+    def get(self, request, user_name):
+        profile = TwitterUser.objects.filter(username=user_name).first()
+        tweets = Tweet.objects.filter(
+            createdby=profile).order_by('-time_submitted')
+        if request.user.is_authenticated:
+            followers = request.user.followers.all()
+        else:
+            followers = []
+        return render(request, 'user_detail.html', {"profile": profile, "tweets": tweets, "followers": followers})
 
 
 def follow_view(request, user_name):

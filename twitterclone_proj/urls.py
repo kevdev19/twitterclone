@@ -25,8 +25,8 @@ from notification_app import views as notificationappviews
 urlpatterns = [
     path('', twitteruserappviews.index_view, name='homepage'),
     path('tweet/<int:tweet_id>/',
-         tweetappviews.tweet_detail_view, name='tweetdetail'),
-    path('create/', tweetappviews.create_tweet, name='createtweet'),
+         tweetappviews.TweetDetailView.as_view(), name='tweetdetail'),
+    path('create/', tweetappviews.CreateTweetView.as_view(), name='createtweet'),
     path('register/', twitteruserappviews.signup_view, name='signup'),
     path('follow/<str:user_name>/',
          twitteruserappviews.follow_view, name='follow'),
@@ -35,7 +35,8 @@ urlpatterns = [
     path('login/', authenticateappviews.login_view, name='loginpage'),
     path('logout/', authenticateappviews.logout_view, name='logoutpage'),
     path('admin/', admin.site.urls),
-    path('notification/', notificationappviews.notify, name='notification'),
+    path('notification/', notificationappviews.NotifyView.as_view(),
+         name='notification'),
     path('profile/<str:user_name>/',
-         twitteruserappviews.user_detail_view, name='profilepage'),
+         twitteruserappviews.UserDetailView.as_view(), name='profilepage'),
 ]
