@@ -26,7 +26,7 @@ urlpatterns = [
     path('', twitteruserappviews.index_view, name='homepage'),
     path('tweet/<int:tweet_id>/',
          tweetappviews.tweet_detail_view, name='tweetdetail'),
-    path('create/', tweetappviews.create_tweet, name='createtweet'),
+    path('create/', tweetappviews.CreateTweetView.as_view(), name='createtweet'),
     path('register/', twitteruserappviews.signup_view, name='signup'),
     path('follow/<str:user_name>/',
          twitteruserappviews.follow_view, name='follow'),
