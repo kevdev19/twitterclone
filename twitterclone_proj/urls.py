@@ -35,7 +35,8 @@ urlpatterns = [
     path('login/', authenticateappviews.login_view, name='loginpage'),
     path('logout/', authenticateappviews.logout_view, name='logoutpage'),
     path('admin/', admin.site.urls),
-    path('notification/', notificationappviews.notify, name='notification'),
+    path('notification/', notificationappviews.NotifyView.as_view(),
+         name='notification'),
     path('profile/<str:user_name>/',
          twitteruserappviews.UserDetailView.as_view(), name='profilepage'),
 ]
